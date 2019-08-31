@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      var div = document.querySelector("#app");
+      var viewModel = {};
+
+      //   Object.defineProperty('대상객체', '객체의 속성',{
+      //       //정의할 내용
+      //   } ); //객체의 특정 속성, 동작을 재정의 하는 API
+
+      // 즉시실행함수는 현재 init과 render가 어떤 애플리케이션의 로직에
+      // 노출되지않게 코드를 또 다른 스코프(유효범위) 안에 넣어줌
+      (function() {
+        function init() {
+          // Vue의 핵심 => Reactivity!
+          Object.defineProperty(viewModel, "str", {
+            // 속성의 접근했을 때의 동작을 정의
+            get: function() {
+              console.log("접근");
+            },
+            // 속성에 값을 할당했을 때의 동작을 정의
+            set: function(newValue) {
+              console.log("할당 :", newValue);
+              render(newValue);
+            }
+          });
+        }
+
+        function render(value) {
+          div.innerHTML = value;
+        }
+
+        init();
+      })();
+    </script>
+  </body>
+</html>
