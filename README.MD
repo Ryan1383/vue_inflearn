@@ -102,3 +102,15 @@ watch 와 computed
 - computed는 validation을 주로 사용함, watch는 주로 무거운 로직들 (매번 실행되기 어려운것들)
 - computed는 주로 텍스트, 연산등의 간단한것들, watch는 데이터등의 무거운 것들(axios) 요청
 - watch의 남용은 코드가 더러워 진다.
+
+
+[VUE-CLI 3.x]
+
+- 생성 : vue create '프로젝트 폴더 위치'
+- 실행 : npm run serve
+- <template> 내부에는 가장 먼저 html 태그가 있어야한다.
+- props 내려주기
+  <app-header v-bind:프롭스 속성 이름="상위 컴포넌트의 데이터 이름"></app-header>
+- 기존에는 data에 값을 넣을 때 객체를 넣었는데 컴포넌트를 만들때는 export default 내부에서 data를 다른 컴포넌트간의 참조가 일어나지 않도록 데이터에 function을 연결하여 새 객체를 리턴하도록 한다.
+- v-model : input과 data의 양방향 바인딩을 한다.
+
